@@ -10,6 +10,23 @@ const pauseButton = document.getElementById('pause-timer');
 const resetIcon = document.getElementById('reset-icon');
 const timerSound = document.getElementById('timer-sound');
 
+// Load timer state from localStorage
+function loadTimerState() {
+  const savedMinutes = localStorage.getItem('timerMinutes');
+  const savedSeconds = localStorage.getItem('timerSeconds');
+  if (savedMinutes !== null && savedSeconds !== null) {
+    timerMinutes = parseInt(savedMinutes, 10);
+    timerSeconds = parseInt(savedSeconds, 10);
+    updateTimeDisplay();
+  }
+}
+
+// Save timer state to localStorage
+function saveTimerState() {
+  localStorage.setItem('timerMinutes', timerMinutes);
+  localStorage.setItem('timerSeconds', timerSeconds);
+}
+
 // Play sound when the timer finishes
 function playTimerSound() {
   timerSound.play();
@@ -20,6 +37,7 @@ function updateTimeDisplay() {
   const minutes = String(timerMinutes).padStart(2, '0');
   const seconds = String(timerSeconds).padStart(2, '0');
   timeInput.value = `${minutes}:${seconds}`;
+  saveTimerState(); // Save state whenever the display updates
 }
 
 // Add 1 minute
@@ -53,6 +71,7 @@ startButton.addEventListener('click', () => {
         pauseButton.disabled = true; // Disable pause button
         playTimerSound(); // Play sound
         alert('Time is up!'); // Optional alert
+        saveTimerState(); // Save final state
       } else {
         timerMinutes--;
         timerSeconds = 59;
@@ -70,6 +89,7 @@ pauseButton.addEventListener('click', () => {
     clearInterval(timerInterval);
     timerInterval = null;
     startButton.disabled = false; // Re-enable start button
+    saveTimerState(); // Save state
   }
 });
 
@@ -105,5 +125,6 @@ timeInput.addEventListener('blur', () => {
   }
 });
 
-// Initialize display
+// Initialize display and load state
+loadTimerState();
 updateTimeDisplay();
