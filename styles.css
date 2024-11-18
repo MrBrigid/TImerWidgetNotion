@@ -1,0 +1,64 @@
+body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  background-color: black;
+  color: white;
+}
+
+.timer-container {
+  text-align: center;
+}
+
+.time-display {
+  font-size: 48px;
+  margin: 20px 0;
+  color: white;
+}
+
+.button-group {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 10px 0;
+}
+
+button {
+  font-size: 18px;
+  padding: 10px 20px;
+  border: 2px solid white;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: transparent;
+  color: white;
+}
+
+button:active {
+  background-color: white;
+  color: black;
+}
+
+button:disabled {
+  background-color: #333;
+  border-color: #666;
+  color: #666;
+  cursor: not-allowed;
+}
+
+.reset-icon {
+  font-size: 24px;
+  cursor: pointer;
+  line-height: 40px;
+  margin: 0 5px;
+}
+
+.reset-icon:hover {
+  color: #007BFF;
+}
+
+.reset-icon:active {
+  color: #0056b3;
+}
