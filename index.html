@@ -9,7 +9,7 @@
 </head>
 <body>
   <div class="timer-container">
-    <div class="time-display" id="time-display">00:00</div>
+    <input class="time-display" id="time-display" value="00:00" maxlength="5">
     <div class="button-group">
       <button id="add-minute">+1 Minute</button>
       <button id="subtract-minute">-1 Minute</button>
@@ -20,5 +20,6 @@
       <button id="pause-timer">Pause</button>
     </div>
   </div>
+  <audio id="timer-sound" src="sound1.flac"></audio>
 </body>
 </html>
